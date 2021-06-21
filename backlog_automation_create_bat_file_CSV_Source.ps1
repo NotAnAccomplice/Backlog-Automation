@@ -115,8 +115,7 @@ $csv_source | ForEach-Object {
     #(Overwriting a file is done using the "-Force" keyword.)
     New-Item -Path . -Name $full_file_name -Value $bat_file_value -Force
 
-    #And now, we run the .bat file we just created. Then we go to the start of the loop and do...
-    #...it all over again with the next row in the .csv file!
+    #And now, we run the .bat file we just created.
     Start-Process .\$full_file_name
     
     #Last step - add the file we just created to the output file.
@@ -125,4 +124,6 @@ $csv_source | ForEach-Object {
     Add-Content $output_file "[Content of file]
     $bat_file_value"
     Add-Content $output_file ''
+
+    #Then we go to the start of the loop and do it all over again with the next row in the .csv file!
    }
